@@ -7,7 +7,7 @@ namespace Microsoft.AspNetCore.SignalR.Configuration
     {
         public WebSocketOptions()
         {
-            MaxIncomingMessageSize = 64 * 1024; // 64 KB
+            MaxIncomingMessageSize = 6 * 1024 * 1024; // 64 KB
         }
 
         /// <summary>
