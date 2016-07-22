@@ -29,5 +29,6 @@ deploy:
   file: "artifacts/build/Microsoft.AspNetCore.SignalR.Server/Debug/net451/Microsoft.AspNetCore.SignalR.Server.dll"
   skip_cleanup: true
   on:
-    branch: long_releases
+    tag: true
+    all_branches: true
 
