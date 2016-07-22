@@ -14,7 +14,6 @@ mono:
   - 4.0.5
 os:
   - linux
-  - osx
 osx_image: xcode7.1
 branches:
   only:
@@ -26,3 +25,12 @@ before_install:
   - if test "$TRAVIS_OS_NAME" == "osx"; then brew update; brew install openssl; brew link --force openssl; fi
 script:
   - ./build.sh --quiet verify
+deploy:
+  provider: releases
+    api_key:
+        secure: "gHYGPVcit8CB0NRweyQStTyaWJhhc86JvjRyS/dAEp8mTqX9ZlyfZi1sfcki1298xWTG/jS0AbcMsJrc408Ac4Z9hmnbmCTbMxSIAwXTgjmTBWIOo9oe7ct5ZX/qtH+bBzV8bjvE31RybadbvmYO9y7i+IJxbiDUnKqzItZU4pVFKuJtUEjKzbjBFC3mW8E5hU/0UGHWxi7ggBsp2ZNo9fmap2OKsHBE9GeLRUeo5NogAu4qt148uA6o+iTRgCgBa6bwAl3ycImt3oj6KfbulCCs4YPHm7uvubQB5YdDSMMsgW1YWTlEIWPt/TotWiieU/j+Z0jSbo7+Q+wRpm3CSfkfsifkHBD2R4W37ldfhwfQotUAYGKoCWOUEvWODvJTjKaa08ENUP+g9t/ogJIZcOc7/C+kR/T6qYm7uVgCYkS5f9SzIZ6L6PWoMqUZ6KSyJNG+0/JJ9u8lynBVj22kROUIJxlXPFoD/4afs0oNMURXdNQuN9AiYaEgxv0RwcZ076w/szwMJ8EUpe4vZCFCa5G0gbTpXz/3eGgjd+CDazOJSX8LvlgbBUnMDA+EEmkVe8dShYCRQi/sMJZ6NHSlj8ZOKuVJOavpz7wU7y21cZYJ1+QTavvl/3gxPFHVUmIgRmqWGsq3SPNChEYd/uqDoqKF/8y61j03zokrlvCDAQE="
+  file: 'artifacts/build/Microsoft.AspNetCore.SignalR.Server/Debug/net451/Microsoft.AspNetCore.SignalR.Server.dll'
+  skip_cleanup: true
+  on:
+    tags
+
